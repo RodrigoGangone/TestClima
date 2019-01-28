@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#21B8F3"
+    android:orientation="vertical">
+
+    <!--Aca debo armar el item con la info que recibo por parte de la API-->
+    <ImageView
+        android:id="@+id/imageViewTempToday"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/tvDescriptionDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Despejado" />
+
+    <TextView
+        android:id="@+id/tvDescriptionDayTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="28°C" />
+
+    <TextView
+        android:id="@+id/tvDescriptionDayTempMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Min temp 18°C" />
+
+    <TextView
+        android:id="@+id/tvDescriptionDayTempMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Max temp 32°C" />
+
+    <TextView
+        android:id="@+id/tvDescriptionDayHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Humedad 78%" />
+
+
+</LinearLayout>
