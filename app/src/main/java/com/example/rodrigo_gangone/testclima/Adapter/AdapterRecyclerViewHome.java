@@ -14,10 +14,10 @@ import com.example.rodrigo_gangone.testclima.R;
 import java.util.List;
 
 public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecyclerViewHome.ClimaViewHolder> {
-    private List<Ciudad> mCiudadList;
+    private List<com.example.rodrigo_gangone.testclima.Model.List> mCiudadList;
     private Context mContext;
 
-    public AdapterRecyclerViewHome(Context context, List<Ciudad> ciudadList) {
+    public AdapterRecyclerViewHome(Context context, List<com.example.rodrigo_gangone.testclima.Model.List> ciudadList) {
         this.mCiudadList = ciudadList;
         this.mContext = context;
     }
@@ -31,14 +31,16 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
 
     @Override
     public void onBindViewHolder(ClimaViewHolder holder, int position) {
-        final Ciudad ciudad = mCiudadList.get(position);
-        String codeImageWeatherList = ciudad.getWeatherList().get(position).getIcon();
+        final com.example.rodrigo_gangone.testclima.Model.List listCiudad = mCiudadList.get(position);
+        String codeImageWeatherList = listCiudad.getWeather().get(position).getIcon();
         //TODO: se supone que al ponerle la posicion me deberia devolver la info del clima actual en tvDescriptionDay
-        holder.tvDescriptionDay.setText(ciudad.getWeatherList().get(position).getDescription());
-        holder.tvDescriptionDayTemp.setText((int) ciudad.getMain().getTemp());
-        holder.tvDescriptionDayTempMin.setText((int) ciudad.getMain().getTemp_min());
-        holder.tvDescriptionDayTempMax.setText((int) ciudad.getMain().getTemp_max());
-        holder.tvDescriptionDayHumidity.setText(ciudad.getMain().getHumidity());
+        holder.tvCiudadName.setText(listCiudad.getName());
+        holder.tvDescriptionDay.setText(listCiudad.getWeather().get(position).getDescription());
+        holder.tvDescriptionDayTemp.setText( listCiudad.getMain().getTemp());
+        holder.tvDescriptionDayTempMin.setText(listCiudad.getMain().getTempMin());
+        holder.tvDescriptionDayTempMax.setText(listCiudad.getMain().getTempMax());
+        holder.tvDescriptionDayHumidity.setText(listCiudad.getMain().getHumidity());
+
         //TODO: Aca hacer un if o switch que dependiendo el string que venga en "icon" poner una foto o gif
         /*if (codeImageWeatherList.equals(XXXX)){
             holder.imageViewTempToday.setImageDrawable(XXXX);
@@ -54,6 +56,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
 
 
     public class ClimaViewHolder extends RecyclerView.ViewHolder {
+        public TextView tvCiudadName;
         public TextView tvDescriptionDay;
         public TextView tvDescriptionDayTemp;
         public TextView tvDescriptionDayTempMin;
@@ -63,7 +66,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
 
         public ClimaViewHolder(View itemView) {
             super(itemView);
-
+            tvCiudadName = itemView.findViewById(R.id.tvCiudadName);
             tvDescriptionDay = itemView.findViewById(R.id.tvDescriptionDay);
             tvDescriptionDayTemp = itemView.findViewById(R.id.tvDescriptionDayTemp);
             tvDescriptionDayTempMin = itemView.findViewById(R.id.tvDescriptionDayTempMin);
