@@ -1,6 +1,6 @@
 package com.example.rodrigo_gangone.testclima.Api;
 
-import com.example.rodrigo_gangone.testclima.Model.Ciudad;
+import com.example.rodrigo_gangone.testclima.Model.GetFamiliasObjetosBodyResponseBean;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import retrofit2.http.Query;
 
 public interface JsonPlaceHolderApi {
     @GET("group")
-    Call<com.example.rodrigo_gangone.testclima.Model.List> getClimaListaDeCiudades(
-            @Query("id") Integer[] cityId,
+    Call<GetFamiliasObjetosBodyResponseBean> getClimaListaDeCiudades(
+            @Query("id") String cityId,
             @Query("units") String units,
             @Query("appid") String apiId
     );
