@@ -15,19 +15,20 @@ import com.example.rodrigo_gangone.testclima.R;
 
 import java.util.List;
 
-public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecyclerViewHome.ClimaViewHolder> {
+public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecyclerViewHome.ClimaViewHolder>  implements View.OnClickListener {
     private List<Ciudad> mCiudadList;
     private Context mContext;
+    private View.OnClickListener listener;
 
     public AdapterRecyclerViewHome(Context context, List<Ciudad> ciudadList) {
         this.mCiudadList = ciudadList;
         this.mContext = context;
     }
 
-
     @Override
     public ClimaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ciudad_item, parent, false);
+        view.setOnClickListener(this);
         return new ClimaViewHolder(view);
     }
 
@@ -50,19 +51,23 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         }else if (codeImageWeatherList.equals(ZZZZ)){
             holder.imageViewTempToday.setImageDrawable(ZZZZ);
         }*/
-        holder.rlItemClimaCiudad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext, ciudad.name, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
+    }
 
 
     @Override
     public int getItemCount() {
         return mCiudadList.size();
+    }
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(listener != null){
+            listener.onClick(view);
+        }
     }
 
 

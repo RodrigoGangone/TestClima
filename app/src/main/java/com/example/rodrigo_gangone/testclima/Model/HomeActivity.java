@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.rodrigo_gangone.testclima.Adapter.AdapterRecyclerViewHome;
 import com.example.rodrigo_gangone.testclima.Api.JsonPlaceHolderApi;
@@ -32,16 +34,26 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetCiuda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        buildRecycler();
+
+        loadClimaActual();
+    }
+
+    public void buildRecycler(){
         mCiudadArrayList = new ArrayList<>();
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewHomeActivity);
+        final RecyclerView recyclerView = findViewById(R.id.recyclerViewHomeActivity);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         mAdapterRecyclerViewHome = new AdapterRecyclerViewHome(this, mCiudadArrayList);
+
+        mAdapterRecyclerViewHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this, mCiudadArrayList.get(recyclerView.getChildAdapterPosition(view)).name, Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.setAdapter(mAdapterRecyclerViewHome);
-
-        loadClimaActual();
-
     }
 
 

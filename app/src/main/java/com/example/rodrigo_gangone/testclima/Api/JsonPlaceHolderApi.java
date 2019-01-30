@@ -14,6 +14,6 @@ public interface JsonPlaceHolderApi {
             @Query("appid") String apiId
     );
 
-//    @GET("forecast")
-//    Call<>
+    //@GET("forecast")
+    //Call<>
 }
