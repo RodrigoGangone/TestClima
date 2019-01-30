@@ -6,10 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rodrigo_gangone.testclima.Model.Ciudad;
-import com.example.rodrigo_gangone.testclima.Model.GetFamiliasObjetosBodyResponseBean;
 import com.example.rodrigo_gangone.testclima.R;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
     @Override
     public void onBindViewHolder(ClimaViewHolder holder, int position) {
         final Ciudad ciudad = mCiudadList.get(position);
+
         //String codeImageWeatherList = ciudad.weather.get(position).icon;
 
         holder.tvCiudadName.setText(ciudad.name);
@@ -48,7 +50,15 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         }else if (codeImageWeatherList.equals(ZZZZ)){
             holder.imageViewTempToday.setImageDrawable(ZZZZ);
         }*/
+        holder.rlItemClimaCiudad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, ciudad.name, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -57,6 +67,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
 
 
     public class ClimaViewHolder extends RecyclerView.ViewHolder {
+        public RelativeLayout rlItemClimaCiudad;
         public TextView tvCiudadName;
         public TextView tvDescriptionDay;
         public TextView tvDescriptionDayTemp;
@@ -67,6 +78,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
 
         public ClimaViewHolder(View itemView) {
             super(itemView);
+            rlItemClimaCiudad = itemView.findViewById(R.id.rlItemClimaCiudad);
             tvCiudadName = itemView.findViewById(R.id.tvCiudadName);
             tvDescriptionDay = itemView.findViewById(R.id.tvDescriptionDay);
             tvDescriptionDayTemp = itemView.findViewById(R.id.tvDescriptionDayTemp);

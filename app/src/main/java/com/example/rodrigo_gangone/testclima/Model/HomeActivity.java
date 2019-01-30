@@ -1,4 +1,4 @@
-package com.example.rodrigo_gangone.testclima;
+package com.example.rodrigo_gangone.testclima.Model;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,8 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.rodrigo_gangone.testclima.Adapter.AdapterRecyclerViewHome;
 import com.example.rodrigo_gangone.testclima.Api.JsonPlaceHolderApi;
-import com.example.rodrigo_gangone.testclima.Model.Ciudad;
-import com.example.rodrigo_gangone.testclima.Model.GetFamiliasObjetosBodyResponseBean;
+import com.example.rodrigo_gangone.testclima.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,7 +20,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class HomeActivity extends AppCompatActivity implements Callback<GetFamiliasObjetosBodyResponseBean> {
+public class HomeActivity extends AppCompatActivity implements Callback<GetCiudadesBodyResponseBean> {
 
     private static final String BASE_URL = "http://api.openweathermap.org/data/2.5/";
     private static final String API_ID = "358a65a06e0160a3309fa14cb5548e2f";
@@ -34,7 +33,6 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetFamil
         setContentView(R.layout.activity_home);
 
         mCiudadArrayList = new ArrayList<>();
-
 
         RecyclerView recyclerView = findViewById(R.id.recyclerViewHomeActivity);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -55,14 +53,14 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetFamil
 
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<GetFamiliasObjetosBodyResponseBean> call = jsonPlaceHolderApi.getClimaListaDeCiudades(sIdCiudades, "metric", API_ID);
+        Call<GetCiudadesBodyResponseBean> call = jsonPlaceHolderApi.getClimaListaDeCiudades(sIdCiudades, "metric", API_ID);
         call.enqueue(this);
     }
 
     @Override
-    public void onResponse(Call<GetFamiliasObjetosBodyResponseBean> call, Response<GetFamiliasObjetosBodyResponseBean> response) {
+    public void onResponse(Call<GetCiudadesBodyResponseBean> call, Response<GetCiudadesBodyResponseBean> response) {
         if (response.isSuccessful()) {
-            GetFamiliasObjetosBodyResponseBean ciudadesList = response.body();
+            GetCiudadesBodyResponseBean ciudadesList = response.body();
             mCiudadArrayList.addAll(ciudadesList.list);
             mAdapterRecyclerViewHome.notifyDataSetChanged();
         } else {
@@ -71,7 +69,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetFamil
     }
 
     @Override
-    public void onFailure(Call<GetFamiliasObjetosBodyResponseBean> call, Throwable t) {
+    public void onFailure(Call<GetCiudadesBodyResponseBean> call, Throwable t) {
         t.printStackTrace();
     }
 

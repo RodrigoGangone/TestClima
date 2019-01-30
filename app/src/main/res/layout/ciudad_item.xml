@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#21B8F3"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/rlItemClimaCiudad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#21B8F3">
 
 
         <ImageView
@@ -23,36 +24,49 @@
             android:id="@+id/tvCiudadName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imageViewTempToday"
             tools:text="Buenos Aires" />
 
         <TextView
             android:id="@+id/tvDescriptionDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCiudadName"
+            android:layout_toRightOf="@+id/imageViewTempToday"
             tools:text="Despejado" />
 
         <TextView
             android:id="@+id/tvDescriptionDayTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDescriptionDay"
+            android:layout_toRightOf="@+id/imageViewTempToday"
             tools:text="28°C" />
 
         <TextView
             android:id="@+id/tvDescriptionDayTempMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDescriptionDayTemp"
+            android:layout_toRightOf="@+id/imageViewTempToday"
             tools:text="Min temp 18°C" />
 
         <TextView
             android:id="@+id/tvDescriptionDayTempMax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDescriptionDayTempMin"
+            android:layout_toEndOf="@+id/imageViewTempToday"
+            android:layout_toRightOf="@+id/imageViewTempToday"
             tools:text="Max temp 32°C" />
 
         <TextView
             android:id="@+id/tvDescriptionDayHumidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDescriptionDayTempMax"
+            android:layout_toEndOf="@+id/imageViewTempToday"
+            android:layout_toRightOf="@+id/imageViewTempToday"
             tools:text="Humedad 78%" />
 
     </RelativeLayout>
