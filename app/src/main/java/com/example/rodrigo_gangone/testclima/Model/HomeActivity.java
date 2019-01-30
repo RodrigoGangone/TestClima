@@ -34,12 +34,12 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetCiuda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        buildRecycler();
+        recyclerBuild();
 
         loadClimaActual();
     }
 
-    public void buildRecycler(){
+    public void recyclerBuild(){
         mCiudadArrayList = new ArrayList<>();
 
         final RecyclerView recyclerView = findViewById(R.id.recyclerViewHomeActivity);
@@ -62,7 +62,6 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetCiuda
         Gson gson = new GsonBuilder().setLenient().create();
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
-
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
         Call<GetCiudadesBodyResponseBean> call = jsonPlaceHolderApi.getClimaListaDeCiudades(sIdCiudades, "metric", API_ID);
