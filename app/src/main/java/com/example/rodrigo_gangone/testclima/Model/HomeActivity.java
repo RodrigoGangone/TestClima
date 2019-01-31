@@ -1,5 +1,6 @@
 package com.example.rodrigo_gangone.testclima.Model;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,7 +23,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class HomeActivity extends AppCompatActivity implements Callback<GetCiudadesBodyResponseBean> {
+public class HomeActivity extends AppCompatActivity implements Callback<GetCiudadesClima> {
 
     private static final String BASE_URL = "http://api.openweathermap.org/data/2.5/";
     private static final String API_ID = "358a65a06e0160a3309fa14cb5548e2f";
@@ -51,6 +52,8 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetCiuda
             @Override
             public void onClick(View view) {
                 Toast.makeText(HomeActivity.this, mCiudadArrayList.get(recyclerView.getChildAdapterPosition(view)).name, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(HomeActivity.this , Weather5DaysActivity.class);
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(mAdapterRecyclerViewHome);
@@ -64,14 +67,14 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetCiuda
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<GetCiudadesBodyResponseBean> call = jsonPlaceHolderApi.getClimaListaDeCiudades(sIdCiudades, "metric", API_ID);
+        Call<GetCiudadesClima> call = jsonPlaceHolderApi.getClimaListaDeCiudades(sIdCiudades, "metric", API_ID);
         call.enqueue(this);
     }
 
     @Override
-    public void onResponse(Call<GetCiudadesBodyResponseBean> call, Response<GetCiudadesBodyResponseBean> response) {
+    public void onResponse(Call<GetCiudadesClima> call, Response<GetCiudadesClima> response) {
         if (response.isSuccessful()) {
-            GetCiudadesBodyResponseBean ciudadesList = response.body();
+            GetCiudadesClima ciudadesList = response.body();
             mCiudadArrayList.addAll(ciudadesList.list);
             mAdapterRecyclerViewHome.notifyDataSetChanged();
         } else {
@@ -80,7 +83,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetCiuda
     }
 
     @Override
-    public void onFailure(Call<GetCiudadesBodyResponseBean> call, Throwable t) {
+    public void onFailure(Call<GetCiudadesClima> call, Throwable t) {
         t.printStackTrace();
     }
 
