@@ -51,9 +51,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         }else if (codeImageWeatherList.equals(ZZZZ)){
             holder.imageViewTempToday.setImageDrawable(ZZZZ);
         }*/
-
     }
-
 
     @Override
     public int getItemCount() {

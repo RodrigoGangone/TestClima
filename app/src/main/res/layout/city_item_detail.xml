@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Adapter.AdapterRecyclerViewDetail">
+
+    <RelativeLayout
+        android:id="@+id/rlItemClimaCitydDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#21B8F3">
+
+
+        <TextView
+            android:id="@+id/tvCityNameDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:layout_marginBottom="5dp"
+            tools:text="Buenos Aires" />
+
+        <TextView
+            android:id="@+id/tvDateDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCityNameDetail"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginBottom="10dp"
+            tools:text="28/01/2019" />
+
+        <TextView
+            android:id="@+id/tvDescriptionDayDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDateDetail"
+            tools:text="Mayormente nublado" />
+
+        <TextView
+            android:id="@+id/tvDescriptionDayTempDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCityNameDetail"
+            android:layout_toEndOf="@+id/tvDateDetail"
+            android:layout_toRightOf="@+id/tvDateDetail"
+            tools:text="28°C" />
+
+
+        <TextView
+            android:id="@+id/tvDescriptionDayTempMaxDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCityNameDetail"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            tools:text="Max temp 32°C" />
+
+        <TextView
+            android:id="@+id/tvDescriptionDayTempMinDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tvDescriptionDayTempMaxDetail"
+            tools:text="Min temp 18°C" />
+
+
+        <ImageView
+            android:id="@+id/imageViewTempTodayDetail"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_toLeftOf="@+id/tvDescriptionDayTempMaxDetail"
+            android:layout_below="@+id/tvCityNameDetail" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Model.Weather5DaysActivity">
+    tools:context=".Model.Activitys.DetailActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewWeather5Days"
+        android:id="@+id/recyclerViewDetailActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

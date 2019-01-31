@@ -1,4 +1,4 @@
-package com.example.rodrigo_gangone.testclima.Model;
+package com.example.rodrigo_gangone.testclima.Model.Activitys;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.example.rodrigo_gangone.testclima.Adapter.AdapterRecyclerViewHome;
 import com.example.rodrigo_gangone.testclima.Api.JsonPlaceHolderApi;
+import com.example.rodrigo_gangone.testclima.Model.Ciudad;
+import com.example.rodrigo_gangone.testclima.Model.GetCiudadesClima;
 import com.example.rodrigo_gangone.testclima.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -35,12 +37,12 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetCiuda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        recyclerBuild();
+        recyclerBuilder();
 
         loadClimaActual();
     }
 
-    public void recyclerBuild(){
+    public void recyclerBuilder(){
         mCiudadArrayList = new ArrayList<>();
 
         final RecyclerView recyclerView = findViewById(R.id.recyclerViewHomeActivity);
@@ -52,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<GetCiuda
             @Override
             public void onClick(View view) {
                 Toast.makeText(HomeActivity.this, mCiudadArrayList.get(recyclerView.getChildAdapterPosition(view)).name, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(HomeActivity.this , Weather5DaysActivity.class);
+                Intent intent = new Intent(HomeActivity.this , DetailActivity.class);
                 startActivity(intent);
             }
         });
