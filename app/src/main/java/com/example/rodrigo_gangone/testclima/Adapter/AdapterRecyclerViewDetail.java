@@ -1,7 +1,6 @@
 package com.example.rodrigo_gangone.testclima.Adapter;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,19 +9,23 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.rodrigo_gangone.testclima.Model.CityDetail;
+import com.example.rodrigo_gangone.testclima.Model.City;
+import com.example.rodrigo_gangone.testclima.Model.CityDaysDetail;
+import com.example.rodrigo_gangone.testclima.Model.FiveDaysWeatherDataDetail;
 import com.example.rodrigo_gangone.testclima.R;
 
 import java.util.List;
 
 public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyclerViewDetail.ClimaDetailViewHolder> {
-    private List<CityDetail> cityDetailList;
-    private Context context;
+    private City mCity;
+    private List<CityDaysDetail> mCityDaysDetailList;
+    private Context mContext;
 
 
-    public AdapterRecyclerViewDetail(Context context, List<CityDetail> cityDetailList) {
-        this.cityDetailList = cityDetailList;
-        this.context = context;
+    public AdapterRecyclerViewDetail(Context context, List<CityDaysDetail> cityDaysDetailList, City city) {
+        this.mCityDaysDetailList = cityDaysDetailList;
+        this.mContext = context;
+        this.mCity = city;
     }
 
     @Override
@@ -33,12 +36,20 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
 
     @Override
     public void onBindViewHolder(ClimaDetailViewHolder holder, int position) {
+        final CityDaysDetail cityDaysDetail =  mCityDaysDetailList.get(position);
+        holder.tvCityNameDetail.setText(mCity.name);
+        holder.tvDateDetail.setText(cityDaysDetail.dt_txt);
+        holder.tvDescriptionDayDetail.setText(cityDaysDetail.weather.get(0).description);
+        holder.tvDescriptionDayTempDetail.setText(String.valueOf(cityDaysDetail.mainDetail.temp));
+        holder.tvDescriptionDayTempMinDetail.setText(String.valueOf(cityDaysDetail.mainDetail.temp_min));
+        holder.tvDescriptionDayTempMaxDetail.setText(String.valueOf(cityDaysDetail.mainDetail.temp_max));
+                //todo if dependiendo el getWatherDetail.icon poner un icono determinado
 
     }
 
     @Override
     public int getItemCount() {
-        return cityDetailList.size();
+        return mCityDaysDetailList.size();
     }
 
     public class ClimaDetailViewHolder extends RecyclerView.ViewHolder {

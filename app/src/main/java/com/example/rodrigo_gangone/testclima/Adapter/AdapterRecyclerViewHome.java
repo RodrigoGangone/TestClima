@@ -8,20 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.rodrigo_gangone.testclima.Model.Ciudad;
+import com.example.rodrigo_gangone.testclima.Model.CityCurrentData;
 import com.example.rodrigo_gangone.testclima.R;
 
 import java.util.List;
 
 public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecyclerViewHome.ClimaViewHolder>  implements View.OnClickListener {
-    private List<Ciudad> mCiudadList;
+    private List<CityCurrentData> mCityCurrentDataList;
     private Context mContext;
     private View.OnClickListener listener;
 
-    public AdapterRecyclerViewHome(Context context, List<Ciudad> ciudadList) {
-        this.mCiudadList = ciudadList;
+    public AdapterRecyclerViewHome(Context context, List<CityCurrentData> cityCurrentDataList) {
+        this.mCityCurrentDataList = cityCurrentDataList;
         this.mContext = context;
     }
 
@@ -34,16 +33,16 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
 
     @Override
     public void onBindViewHolder(ClimaViewHolder holder, int position) {
-        final Ciudad ciudad = mCiudadList.get(position);
+        final CityCurrentData cityCurrentData = mCityCurrentDataList.get(position);
 
-        //String codeImageWeatherList = ciudad.weather.get(position).icon;
+        //String codeImageWeatherList = cityCurrentData.weather.get(position).icon;
 
-        holder.tvCiudadName.setText(ciudad.name);
-        holder.tvDescriptionDay.setText(ciudad.weather.get(0).description);
-        holder.tvDescriptionDayTemp.setText(String.valueOf(ciudad.main.temp));
-        holder.tvDescriptionDayTempMin.setText(String.valueOf(ciudad.main.tempMin));
-        holder.tvDescriptionDayTempMax.setText(String.valueOf(ciudad.main.tempMax));
-        holder.tvDescriptionDayHumidity.setText(String.valueOf(ciudad.main.humidity));
+        holder.tvCiudadName.setText(cityCurrentData.name);
+        holder.tvDescriptionDay.setText(cityCurrentData.weather.get(0).description);
+        holder.tvDescriptionDayTemp.setText(String.valueOf(cityCurrentData.main.temp));
+        holder.tvDescriptionDayTempMin.setText(String.valueOf(cityCurrentData.main.temp_min));
+        holder.tvDescriptionDayTempMax.setText(String.valueOf(cityCurrentData.main.temp_max));
+        holder.tvDescriptionDayHumidity.setText(String.valueOf(cityCurrentData.main.humidity));
 
         //TODO: Aca hacer un if o switch que dependiendo el string que venga en "icon" poner una foto o gif
         /*if (codeImageWeatherList.equals(XXXX)){
@@ -55,7 +54,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
 
     @Override
     public int getItemCount() {
-        return mCiudadList.size();
+        return mCityCurrentDataList.size();
     }
     public void setOnClickListener(View.OnClickListener listener){
         this.listener = listener;

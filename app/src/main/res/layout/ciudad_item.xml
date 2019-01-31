@@ -44,7 +44,7 @@
             tools:text="28°C" />
 
         <TextView
-            android:id="@+id/tvDescriptionDayTempMin"
+            android:id="@+id/tvDescriptionDayTempMax"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvDescriptionDayTemp"
@@ -52,10 +52,10 @@
             tools:text="Min temp 18°C" />
 
         <TextView
-            android:id="@+id/tvDescriptionDayTempMax"
+            android:id="@+id/tvDescriptionDayTempMin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvDescriptionDayTempMin"
+            android:layout_below="@+id/tvDescriptionDayTempMax"
             android:layout_toEndOf="@+id/imageViewTempToday"
             android:layout_toRightOf="@+id/imageViewTempToday"
             tools:text="Max temp 32°C" />
@@ -64,7 +64,7 @@
             android:id="@+id/tvDescriptionDayHumidity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvDescriptionDayTempMax"
+            android:layout_below="@+id/tvDescriptionDayTempMin"
             android:layout_toEndOf="@+id/imageViewTempToday"
             android:layout_toRightOf="@+id/imageViewTempToday"
             tools:text="Humedad 78%" />
