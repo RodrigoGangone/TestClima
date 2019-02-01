@@ -18,6 +18,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyclerViewDetail.ClimaDetailViewHolder> {
     private FiveDaysWeatherDataDetail mFiveDaysWeatherDataDetail;
@@ -40,9 +41,21 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
     @Override
     public void onBindViewHolder(ClimaDetailViewHolder holder, int position) {
         final CityDaysDetail cityDaysDetail = mCityDaysDetailList.get(position);
+        Date date = null;
+        String myDateFormat =   null ;
+
+        String dateString = cityDaysDetail.dt_txt;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm", Locale.getDefault());
+        try {
+            date = format.parse(dateString);
+            myDateFormat = myFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         holder.tvCityNameDetail.setText(mFiveDaysWeatherDataDetail.city.name);
-        holder.tvDateDetail.setText(cityDaysDetail.dt_txt);
+        holder.tvDateDetail.setText(myDateFormat);
         holder.tvDescriptionDayDetail.setText(cityDaysDetail.weather.get(0).description);
         holder.tvDescriptionDayTempDetail.setText(String.valueOf(cityDaysDetail.main.temp));
         holder.tvDescriptionDayTempMinDetail.setText(String.valueOf(cityDaysDetail.main.temp_min));
@@ -50,6 +63,7 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
 
 
         //todo if dependiendo el getWatherDetail.icon poner un icono determinado
+
     }
 
     @Override
