@@ -31,6 +31,8 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
     private List<CityDaysDetail> mCiudadDetailArrayList;
     private AdapterRecyclerViewDetail mAdapterRecyclerViewDetail;
 
+    public RecyclerView recyclerView ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +49,9 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
 
     public void recyclerBuilder() {
         mCiudadDetailArrayList = new ArrayList<>();
-
-        final RecyclerView recyclerView = findViewById(R.id.recyclerViewDetailActivity);
+        recyclerView = findViewById(R.id.recyclerViewDetailActivity);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapterRecyclerViewDetail = new AdapterRecyclerViewDetail(DetailActivity.this, mCiudadDetailArrayList, mCity);
-
-        recyclerView.setAdapter(mAdapterRecyclerViewDetail);
     }
 
     public void getDetailOfWeatherCity(Integer id) {
@@ -72,8 +70,13 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
     @Override
     public void onResponse(Call<FiveDaysWeatherDataDetail> call, Response<FiveDaysWeatherDataDetail> response) {
         if (response.isSuccessful()){
-            Toast.makeText(this, "successful", Toast.LENGTH_SHORT).show();
-            FiveDaysWeatherDataDetail listaClimaExtendido = response.body();
+            FiveDaysWeatherDataDetail climaExtendido = response.body();
+            mCiudadDetailArrayList.addAll(climaExtendido.list);
+
+            mAdapterRecyclerViewDetail = new AdapterRecyclerViewDetail(DetailActivity.this, mCiudadDetailArrayList , climaExtendido);
+            recyclerView.setAdapter(mAdapterRecyclerViewDetail);
+
+            mAdapterRecyclerViewDetail.notifyDataSetChanged();
         }else{
 
         }

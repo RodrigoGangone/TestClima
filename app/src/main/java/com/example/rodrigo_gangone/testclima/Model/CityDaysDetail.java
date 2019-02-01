@@ -5,11 +5,11 @@ import java.util.List;
 public class CityDaysDetail {
 
     public Integer dt;
-    public MainDetail mainDetail;
+    public MainDetail main;
     public List<Weather> weather = null;
     public Clouds clouds;
     public Wind wind;
-    public SysDetail sysDetail;
+    public SysDetail sys;
     public String dt_txt;
 
 }

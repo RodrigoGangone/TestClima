@@ -56,6 +56,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
     public int getItemCount() {
         return mCityCurrentDataList.size();
     }
+
     public void setOnClickListener(View.OnClickListener listener){
         this.listener = listener;
     }

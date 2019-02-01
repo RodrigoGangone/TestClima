@@ -40,7 +40,6 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
         setContentView(R.layout.activity_home);
 
         recyclerBuilder();
-
         loadClimaActual();
     }
 
