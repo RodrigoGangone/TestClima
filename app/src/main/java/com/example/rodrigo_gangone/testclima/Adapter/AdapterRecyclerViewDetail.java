@@ -16,6 +16,7 @@ import com.example.rodrigo_gangone.testclima.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyclerViewDetail.ClimaDetailViewHolder> {
@@ -39,12 +40,15 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
     @Override
     public void onBindViewHolder(ClimaDetailViewHolder holder, int position) {
         final CityDaysDetail cityDaysDetail = mCityDaysDetailList.get(position);
+
         holder.tvCityNameDetail.setText(mFiveDaysWeatherDataDetail.city.name);
         holder.tvDateDetail.setText(cityDaysDetail.dt_txt);
         holder.tvDescriptionDayDetail.setText(cityDaysDetail.weather.get(0).description);
         holder.tvDescriptionDayTempDetail.setText(String.valueOf(cityDaysDetail.main.temp));
         holder.tvDescriptionDayTempMinDetail.setText(String.valueOf(cityDaysDetail.main.temp_min));
         holder.tvDescriptionDayTempMaxDetail.setText(String.valueOf(cityDaysDetail.main.temp_max));
+
+
         //todo if dependiendo el getWatherDetail.icon poner un icono determinado
     }
 
@@ -76,15 +80,5 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
         }
     }
 
-    public void ParseDateTime(String dateTime) {
-        String dtStart = dateTime;
-        SimpleDateFormat format = new SimpleDateFormat("YYYY/mm/dd HH:mm:ss");
-        try {
-            date = format.parse(dtStart);
-            System.out.println("Date ->" + date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
 
 }
