@@ -9,12 +9,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity;
 import com.example.rodrigo_gangone.testclima.Model.CityCurrentData;
 import com.example.rodrigo_gangone.testclima.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecyclerViewHome.ClimaViewHolder>  implements View.OnClickListener {
+import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity.ICON_URL;
+import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity.ICON_URL_PNG;
+
+public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecyclerViewHome.ClimaViewHolder> implements View.OnClickListener {
     private List<CityCurrentData> mCityCurrentDataList;
     private Context mContext;
     private View.OnClickListener listener;
@@ -35,7 +40,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
     public void onBindViewHolder(ClimaViewHolder holder, int position) {
         final CityCurrentData cityCurrentData = mCityCurrentDataList.get(position);
 
-        //String codeImageWeatherList = cityCurrentData.weather.get(position).icon;
+        String codeImageWeatherList = cityCurrentData.weather.get(0).icon;
 
         holder.tvCiudadName.setText(cityCurrentData.name);
         holder.tvDescriptionDay.setText(cityCurrentData.weather.get(0).description);
@@ -44,12 +49,12 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         holder.tvDescriptionDayTempMax.setText(String.valueOf(cityCurrentData.main.temp_max));
         holder.tvDescriptionDayHumidity.setText(String.valueOf(cityCurrentData.main.humidity));
 
-        //TODO: Aca hacer un if o switch que dependiendo el string que venga en "icon" poner una foto o gif
-        /*if (codeImageWeatherList.equals(XXXX)){
-            holder.imageViewTempToday.setImageDrawable(XXXX);
-        }else if (codeImageWeatherList.equals(ZZZZ)){
-            holder.imageViewTempToday.setImageDrawable(ZZZZ);
-        }*/
+        Picasso.get().load(ICON_URL + codeImageWeatherList + ICON_URL_PNG).
+                placeholder(R.drawable.ic_refresh).
+                error(R.drawable.ic_error_icon).
+                into(holder.imageViewTempToday);
+
+
     }
 
     @Override
@@ -57,13 +62,13 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         return mCityCurrentDataList.size();
     }
 
-    public void setOnClickListener(View.OnClickListener listener){
+    public void setOnClickListener(View.OnClickListener listener) {
         this.listener = listener;
     }
 
     @Override
     public void onClick(View view) {
-        if(listener != null){
+        if (listener != null) {
             listener.onClick(view);
         }
     }

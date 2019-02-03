@@ -28,6 +28,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HomeActivity extends AppCompatActivity implements Callback<CurrentWeatherData> {
 
     public static final String BASE_URL = "http://api.openweathermap.org/data/2.5/";
+    public static final String ICON_URL = "http://openweathermap.org/img/w/";
+    public static final String ICON_URL_PNG = ".png";
     public static final String API_ID = "358a65a06e0160a3309fa14cb5548e2f";
     public static final String ID_CITY_KEY = "id_city_key";
 
@@ -89,6 +91,5 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
     public void onFailure(Call<CurrentWeatherData> call, Throwable t) {
         t.printStackTrace();
     }
-
 
 }
