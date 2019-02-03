@@ -40,18 +40,19 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
     public void onBindViewHolder(ClimaViewHolder holder, int position) {
         final CityCurrentData cityCurrentData = mCityCurrentDataList.get(position);
 
+
         String codeImageWeatherList = cityCurrentData.weather.get(0).icon;
 
         holder.tvCiudadName.setText(cityCurrentData.name);
         holder.tvDescriptionDay.setText(cityCurrentData.weather.get(0).description);
-        holder.tvDescriptionDayTemp.setText(String.valueOf(cityCurrentData.main.temp));
-        holder.tvDescriptionDayTempMin.setText(String.valueOf(cityCurrentData.main.temp_min));
-        holder.tvDescriptionDayTempMax.setText(String.valueOf(cityCurrentData.main.temp_max));
-        holder.tvDescriptionDayHumidity.setText(String.valueOf(cityCurrentData.main.humidity));
+        holder.tvDescriptionDayTemp.setText(String.valueOf(cityCurrentData.main.temp).replaceAll(".$", "").concat(" C°"));
+        holder.tvDescriptionDayTempMin.setText(String.valueOf(cityCurrentData.main.temp_min).replaceAll(".$", "").concat(" C°"));
+        holder.tvDescriptionDayTempMax.setText(String.valueOf(cityCurrentData.main.temp_max).replaceAll(".$", "").concat(" C°"));
+        holder.tvDescriptionDayHumidity.setText("Humidity: ".concat(String.valueOf(cityCurrentData.main.humidity).concat("%")));
 
         Picasso.get().load(ICON_URL + codeImageWeatherList + ICON_URL_PNG).
                 placeholder(R.drawable.ic_refresh).
-                error(R.drawable.ic_error_icon).
+                error(R.drawable.ic_error_icon).resize(50,50).
                 into(holder.imageViewTempToday);
 
 
