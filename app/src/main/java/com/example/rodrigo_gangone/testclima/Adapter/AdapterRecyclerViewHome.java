@@ -49,8 +49,8 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         holder.tvDescriptionDayHumidity.setText(mContext.getString(R.string.humidity).concat(String.valueOf(cityCurrentData.main.humidity).concat(mContext.getString(R.string.percentage))));
 
         Picasso.get().load(ICON_URL + codeImageWeatherList + ICON_URL_PNG).
-                placeholder(R.drawable.ic_refresh).
-                error(R.drawable.ic_error_icon).resize(20, 20).
+                placeholder(R.drawable.ic_image_in_progress_24dp).
+                error(R.drawable.ic_broken_image_24dp).
                 into(holder.imageViewTempToday);
 
     }

@@ -13,12 +13,16 @@ import com.example.rodrigo_gangone.testclima.Model.City;
 import com.example.rodrigo_gangone.testclima.Model.CityDaysDetail;
 import com.example.rodrigo_gangone.testclima.Model.FiveDaysWeatherDataDetail;
 import com.example.rodrigo_gangone.testclima.R;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity.ICON_URL;
+import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity.ICON_URL_PNG;
 
 public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyclerViewDetail.ClimaDetailViewHolder> {
     private FiveDaysWeatherDataDetail mFiveDaysWeatherDataDetail;
@@ -41,6 +45,8 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
     @Override
     public void onBindViewHolder(ClimaDetailViewHolder holder, int position) {
         final CityDaysDetail cityDaysDetail = mCityDaysDetailList.get(position);
+        String codeImageWeatherList = cityDaysDetail.weather.get(0).icon;
+
         Date date = null;
         String myDateFormat =   null ;
 
@@ -61,8 +67,10 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
         holder.tvDescriptionDayTempMinDetail.setText(String.valueOf(cityDaysDetail.main.temp_min));
         holder.tvDescriptionDayTempMaxDetail.setText(String.valueOf(cityDaysDetail.main.temp_max));
 
-
-        //todo if dependiendo el getWatherDetail.icon poner un icono determinado
+        Picasso.get().load(ICON_URL + codeImageWeatherList + ICON_URL_PNG).
+                placeholder(R.drawable.ic_image_in_progress_24dp).
+                error(R.drawable.ic_broken_image_24dp).
+                into(holder.imageViewTempTodayDetail);
 
     }
 
