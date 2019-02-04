@@ -68,7 +68,6 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
         holder.tvDescriptionDayTempMaxDetail.setText(String.valueOf(cityDaysDetail.main.temp_max).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
         holder.tvDescriptionDayHumidityDetail.setText(mContext.getString(R.string.humidity).concat(String.valueOf(cityDaysDetail.main.humidity).concat(mContext.getString(R.string.percentage))));
 
-
         Picasso.get().load(ICON_URL + codeImageWeatherList + ICON_URL_PNG).
                 placeholder(R.drawable.ic_image_in_progress_24dp).
                 error(R.drawable.ic_broken_image_24dp).

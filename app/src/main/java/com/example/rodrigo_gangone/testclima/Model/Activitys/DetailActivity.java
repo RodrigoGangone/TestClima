@@ -25,6 +25,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity.LANG;
 import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity.UNITS;
 
 public class DetailActivity extends AppCompatActivity implements Callback<FiveDaysWeatherDataDetail> {
@@ -64,7 +65,7 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
         Retrofit retrofit = new Retrofit.Builder().baseUrl(HomeActivity.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<FiveDaysWeatherDataDetail> call = jsonPlaceHolderApi.getClimaExtendido(id, UNITS, HomeActivity.API_ID);
+        Call<FiveDaysWeatherDataDetail> call = jsonPlaceHolderApi.getClimaExtendido(id,LANG,UNITS, HomeActivity.API_ID);
         call.enqueue(this);
     }
 

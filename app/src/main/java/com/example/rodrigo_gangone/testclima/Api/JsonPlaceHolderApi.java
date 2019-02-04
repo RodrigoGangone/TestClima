@@ -11,6 +11,7 @@ public interface JsonPlaceHolderApi {
     @GET("group")
     Call<CurrentWeatherData> getClimaListaDeCiudades(
             @Query("id") String cityId,
+            @Query("lang") String lang,
             @Query("units") String units,
             @Query("appid") String apiId
     );
@@ -18,6 +19,7 @@ public interface JsonPlaceHolderApi {
     @GET("forecast")
     Call<FiveDaysWeatherDataDetail> getClimaExtendido(
             @Query("id") Integer cityId,
+            @Query("lang") String lang,
             @Query("units")String units,
             @Query("appid") String apiId
     );
