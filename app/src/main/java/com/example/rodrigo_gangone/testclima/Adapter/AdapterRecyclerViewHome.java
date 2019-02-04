@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity;
 import com.example.rodrigo_gangone.testclima.Model.CityCurrentData;
 import com.example.rodrigo_gangone.testclima.R;
 import com.squareup.picasso.Picasso;
@@ -40,21 +39,19 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
     public void onBindViewHolder(ClimaViewHolder holder, int position) {
         final CityCurrentData cityCurrentData = mCityCurrentDataList.get(position);
 
-
         String codeImageWeatherList = cityCurrentData.weather.get(0).icon;
 
         holder.tvCiudadName.setText(cityCurrentData.name);
         holder.tvDescriptionDay.setText(cityCurrentData.weather.get(0).description);
-        holder.tvDescriptionDayTemp.setText(String.valueOf(cityCurrentData.main.temp).replaceAll(".$", "").concat(" C°"));
-        holder.tvDescriptionDayTempMin.setText(String.valueOf(cityCurrentData.main.temp_min).replaceAll(".$", "").concat(" C°"));
-        holder.tvDescriptionDayTempMax.setText(String.valueOf(cityCurrentData.main.temp_max).replaceAll(".$", "").concat(" C°"));
-        holder.tvDescriptionDayHumidity.setText("Humidity: ".concat(String.valueOf(cityCurrentData.main.humidity).concat("%")));
+        holder.tvDescriptionDayTemp.setText(String.valueOf(cityCurrentData.main.temp).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
+        holder.tvDescriptionDayTempMin.setText(String.valueOf(cityCurrentData.main.temp_min).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
+        holder.tvDescriptionDayTempMax.setText(String.valueOf(cityCurrentData.main.temp_max).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
+        holder.tvDescriptionDayHumidity.setText(mContext.getString(R.string.humidity).concat(String.valueOf(cityCurrentData.main.humidity).concat(mContext.getString(R.string.percentage))));
 
         Picasso.get().load(ICON_URL + codeImageWeatherList + ICON_URL_PNG).
                 placeholder(R.drawable.ic_refresh).
-                error(R.drawable.ic_error_icon).resize(50,50).
+                error(R.drawable.ic_error_icon).resize(20, 20).
                 into(holder.imageViewTempToday);
-
 
     }
 
