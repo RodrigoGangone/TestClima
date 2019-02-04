@@ -65,7 +65,7 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
         Retrofit retrofit = new Retrofit.Builder().baseUrl(HomeActivity.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<FiveDaysWeatherDataDetail> call = jsonPlaceHolderApi.getClimaExtendido(id,LANG,UNITS, HomeActivity.API_ID);
+        Call<FiveDaysWeatherDataDetail> call = jsonPlaceHolderApi.getClimaExtendido(id, LANG, UNITS, HomeActivity.API_ID);
         call.enqueue(this);
     }
 
@@ -81,7 +81,6 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
 
             mAdapterRecyclerViewDetail.notifyDataSetChanged();
         } else {
-
         }
     }
 

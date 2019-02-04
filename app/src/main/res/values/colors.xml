@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#546e7a</color>
-    <color name="colorPrimaryDark">#29434e</color>
+    <color name="colorPrimary">#673ab7</color>
+    <color name="colorPrimaryDark">#320b86</color>
     <color name="colorAccent">#FF4081</color>
     <color name="color_red">#FD1301</color>
     <color name="color_blue">#142492</color>
 
+    <!--Texts Colors -->
     <color name="color_text">#000000</color>
+
+    <!--Colors items-->
+    <color name="color_good_day">#D255ADF5</color>
+    <color name="color_bad_day">#ADBDBDBD</color>
+    <color name="color_snow_day">#C380DEEA</color>
+    <color name="color_fog_day">#D0CFD8DC</color>
 
 </resources>

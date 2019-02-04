@@ -28,6 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HomeActivity extends AppCompatActivity implements Callback<CurrentWeatherData> {
 
     public static final String BASE_URL = "http://api.openweathermap.org/data/2.5/";
+    public static final String CITYS_ID = "6559994,524901,703448,2643743,5128638";
     public static final String ICON_URL = "http://openweathermap.org/img/w/";
     public static final String UNITS = "metric";
     public static final String LANG = "es";
@@ -53,6 +54,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
         final RecyclerView recyclerView = findViewById(R.id.recyclerViewHomeActivity);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
         mAdapterRecyclerViewHome = new AdapterRecyclerViewHome(this, mCityCurrentDataArrayList);
 
         mAdapterRecyclerViewHome.setOnClickListener(new View.OnClickListener() {
@@ -68,13 +70,12 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
 
 
     public void loadClimaActual() {
-        String sIdCiudades = "6559994,524901,703448,2643743,5128638";
         Gson gson = new GsonBuilder().setLenient().create();
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<CurrentWeatherData> call = jsonPlaceHolderApi.getClimaListaDeCiudades(sIdCiudades,LANG, UNITS, API_ID);
+        Call<CurrentWeatherData> call = jsonPlaceHolderApi.getClimaListaDeCiudades(CITYS_ID,LANG, UNITS, API_ID);
         call.enqueue(this);
     }
 
@@ -83,6 +84,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
         if (response.isSuccessful()) {
             CurrentWeatherData ciudadesList = response.body();
             mCityCurrentDataArrayList.addAll(ciudadesList.list);
+
             mAdapterRecyclerViewHome.notifyDataSetChanged();
         } else {
             System.out.print(response.errorBody().toString());

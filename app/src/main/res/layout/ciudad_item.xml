@@ -7,10 +7,11 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cvItemClimaCiudad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="4dp"
-        card_view:cardElevation="4dp"
+        card_view:cardElevation="6dp"
         card_view:cardUseCompatPadding="true">
 
         <RelativeLayout

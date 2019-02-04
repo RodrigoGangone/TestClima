@@ -48,11 +48,11 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
         String codeImageWeatherList = cityDaysDetail.weather.get(0).icon;
 
         Date date = null;
-        String myDateFormat =   null ;
+        String myDateFormat = null;
 
         String dateString = cityDaysDetail.dt_txt;
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
-        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM hh:mm", Locale.getDefault());
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM hh:mm a", Locale.getDefault());
         try {
             date = format.parse(dateString);
             myDateFormat = myFormat.format(date);

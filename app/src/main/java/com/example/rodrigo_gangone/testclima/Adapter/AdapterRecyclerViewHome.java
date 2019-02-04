@@ -1,6 +1,7 @@
 package com.example.rodrigo_gangone.testclima.Adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,11 +39,11 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
     @Override
     public void onBindViewHolder(ClimaViewHolder holder, int position) {
         final CityCurrentData cityCurrentData = mCityCurrentDataList.get(position);
-
+        String weatherDescription = cityCurrentData.weather.get(0).description;
         String codeImageWeatherList = cityCurrentData.weather.get(0).icon;
 
         holder.tvCiudadName.setText(cityCurrentData.name);
-        holder.tvDescriptionDay.setText(cityCurrentData.weather.get(0).description);
+        holder.tvDescriptionDay.setText(weatherDescription);
         holder.tvDescriptionDayTemp.setText(String.valueOf(cityCurrentData.main.temp).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
         holder.tvDescriptionDayTempMin.setText(String.valueOf(cityCurrentData.main.temp_min).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
         holder.tvDescriptionDayTempMax.setText(String.valueOf(cityCurrentData.main.temp_max).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
@@ -52,6 +53,16 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
                 placeholder(R.drawable.ic_image_in_progress_24dp).
                 error(R.drawable.ic_broken_image_24dp).
                 into(holder.imageViewTempToday);
+
+        if(weatherDescription.equals("cielo claro") || weatherDescription.equals("algo de nubes") || weatherDescription.equals("nubes dispersas")){
+            holder.cvItemClimaCiudad.setCardBackgroundColor(mContext.getColor(R.color.color_good_day));
+        }else if (weatherDescription.equals("nuber rotas") || weatherDescription.equals("llovizna") || weatherDescription.equals("lluvia ligera") || weatherDescription.equals("tormenta")){
+            holder.cvItemClimaCiudad.setCardBackgroundColor(mContext.getColor(R.color.color_bad_day));
+        }else if (weatherDescription.equals("nevada ligera")){
+            holder.cvItemClimaCiudad.setCardBackgroundColor(mContext.getColor(R.color.color_snow_day));
+        }else{
+            holder.cvItemClimaCiudad.setCardBackgroundColor(mContext.getColor(R.color.color_fog_day));
+        }
 
     }
 
@@ -73,6 +84,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
 
 
     public class ClimaViewHolder extends RecyclerView.ViewHolder {
+        public CardView cvItemClimaCiudad;
         public RelativeLayout rlItemClimaCiudad;
         public TextView tvCiudadName;
         public TextView tvDescriptionDay;
@@ -84,6 +96,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
 
         public ClimaViewHolder(View itemView) {
             super(itemView);
+            cvItemClimaCiudad = itemView.findViewById(R.id.cvItemClimaCiudad);
             rlItemClimaCiudad = itemView.findViewById(R.id.rlItemClimaCiudad);
             tvCiudadName = itemView.findViewById(R.id.tvCiudadName);
             tvDescriptionDay = itemView.findViewById(R.id.tvDescriptionDay);
