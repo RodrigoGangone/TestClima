@@ -52,7 +52,7 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
 
         String dateString = cityDaysDetail.dt_txt;
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
-        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm", Locale.getDefault());
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM hh:mm", Locale.getDefault());
         try {
             date = format.parse(dateString);
             myDateFormat = myFormat.format(date);
@@ -63,9 +63,11 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
         holder.tvCityNameDetail.setText(mFiveDaysWeatherDataDetail.city.name);
         holder.tvDateDetail.setText(myDateFormat);
         holder.tvDescriptionDayDetail.setText(cityDaysDetail.weather.get(0).description);
-        holder.tvDescriptionDayTempDetail.setText(String.valueOf(cityDaysDetail.main.temp));
-        holder.tvDescriptionDayTempMinDetail.setText(String.valueOf(cityDaysDetail.main.temp_min));
-        holder.tvDescriptionDayTempMaxDetail.setText(String.valueOf(cityDaysDetail.main.temp_max));
+        holder.tvDescriptionDayTempDetail.setText(String.valueOf(cityDaysDetail.main.temp).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
+        holder.tvDescriptionDayTempMinDetail.setText(String.valueOf(cityDaysDetail.main.temp_min).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
+        holder.tvDescriptionDayTempMaxDetail.setText(String.valueOf(cityDaysDetail.main.temp_max).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
+        holder.tvDescriptionDayHumidityDetail.setText(mContext.getString(R.string.humidity).concat(String.valueOf(cityDaysDetail.main.humidity).concat(mContext.getString(R.string.percentage))));
+
 
         Picasso.get().load(ICON_URL + codeImageWeatherList + ICON_URL_PNG).
                 placeholder(R.drawable.ic_image_in_progress_24dp).
@@ -87,6 +89,7 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
         public TextView tvDescriptionDayTempDetail;
         public TextView tvDescriptionDayTempMinDetail;
         public TextView tvDescriptionDayTempMaxDetail;
+        public TextView tvDescriptionDayHumidityDetail;
         public ImageView imageViewTempTodayDetail;
 
         public ClimaDetailViewHolder(View itemView) {
@@ -98,6 +101,7 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
             tvDescriptionDayTempDetail = itemView.findViewById(R.id.tvDescriptionDayTempDetail);
             tvDescriptionDayTempMinDetail = itemView.findViewById(R.id.tvDescriptionDayTempMinDetail);
             tvDescriptionDayTempMaxDetail = itemView.findViewById(R.id.tvDescriptionDayTempMaxDetail);
+            tvDescriptionDayHumidityDetail = itemView.findViewById(R.id.tvDescriptionDayHumidityDetail);
             imageViewTempTodayDetail = itemView.findViewById(R.id.imageViewTempTodayDetail);
         }
     }

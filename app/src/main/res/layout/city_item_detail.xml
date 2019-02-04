@@ -18,43 +18,55 @@
             android:id="@+id/rlItemClimaCitydDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp">
+            android:layout_margin="10dp">
 
 
             <TextView
                 android:id="@+id/tvCityNameDetail"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="15dp"
+                android:layout_marginRight="20dp"
                 android:textAlignment="center"
+                android:textSize="12sp"
                 tools:text="Buenos Aires" />
 
             <TextView
                 android:id="@+id/tvDateDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvCityNameDetail"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp"
-                tools:text="28/01/2019" />
+                android:layout_toRightOf="@+id/tvCityNameDetail"
+                android:textSize="12sp"
+                tools:text="28/01/2019 03:00" />
 
             <TextView
                 android:id="@+id/tvDescriptionDayDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvDateDetail"
-                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/tvCityNameDetail"
                 tools:text="Mayormente nublado" />
+
+            <TextView
+                android:id="@+id/tvDescriptionDayHumidityDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDescriptionDayDetail"
+                tools:text="Humedad 78%" />
+
+
+            <ImageView
+                android:id="@+id/imageViewTempTodayDetail"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true" />
 
             <TextView
                 android:id="@+id/tvDescriptionDayTempDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvCityNameDetail"
-                android:layout_toEndOf="@+id/tvDateDetail"
-                android:layout_toRightOf="@+id/tvDateDetail"
+                android:layout_below="@id/imageViewTempTodayDetail"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp"
+                android:textSize="30sp"
                 tools:text="28°C" />
 
 
@@ -62,30 +74,22 @@
                 android:id="@+id/tvDescriptionDayTempMaxDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvCityNameDetail"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginHorizontal="5dp"
-                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/tvDescriptionDayTempDetail"
+                android:layout_toStartOf="@+id/tvDescriptionDayTempMinDetail"
+                android:drawableEnd="@drawable/ic_arrow_up_24dp"
+                android:drawableTint="@color/color_red"
                 tools:text="Max temp 32°C" />
 
             <TextView
                 android:id="@+id/tvDescriptionDayTempMinDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvDescriptionDayTempMaxDetail"
+                android:layout_below="@id/tvDescriptionDayTempDetail"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginHorizontal="5dp"
+                android:layout_marginLeft="20dp"
+                android:drawableEnd="@drawable/ic_arrow_down_24dp"
+                android:drawableTint="@color/color_blue"
                 tools:text="Min temp 18°C" />
-
-
-            <ImageView
-                android:id="@+id/imageViewTempTodayDetail"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_below="@+id/tvCityNameDetail"
-                android:layout_toLeftOf="@+id/tvDescriptionDayTempMaxDetail" />
 
 
         </RelativeLayout>

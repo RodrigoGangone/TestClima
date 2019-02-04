@@ -18,6 +18,7 @@ public interface JsonPlaceHolderApi {
     @GET("forecast")
     Call<FiveDaysWeatherDataDetail> getClimaExtendido(
             @Query("id") Integer cityId,
+            @Query("units")String units,
             @Query("appid") String apiId
     );
 }

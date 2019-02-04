@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
 
     public static final String BASE_URL = "http://api.openweathermap.org/data/2.5/";
     public static final String ICON_URL = "http://openweathermap.org/img/w/";
+    public static final String UNITS = "metric";
     public static final String ICON_URL_PNG = ".png";
     public static final String API_ID = "358a65a06e0160a3309fa14cb5548e2f";
     public static final String ID_CITY_KEY = "id_city_key";
@@ -45,7 +46,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
         loadClimaActual();
     }
 
-    public void recyclerBuilder(){
+    public void recyclerBuilder() {
         mCityCurrentDataArrayList = new ArrayList<>();
 
         final RecyclerView recyclerView = findViewById(R.id.recyclerViewHomeActivity);
@@ -56,8 +57,8 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
         mAdapterRecyclerViewHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this , DetailActivity.class);
-                intent.putExtra(ID_CITY_KEY , mCityCurrentDataArrayList.get(recyclerView.getChildAdapterPosition(view)).id);
+                Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
+                intent.putExtra(ID_CITY_KEY, mCityCurrentDataArrayList.get(recyclerView.getChildAdapterPosition(view)).id);
                 startActivity(intent);
             }
         });
@@ -72,7 +73,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<CurrentWeatherData> call = jsonPlaceHolderApi.getClimaListaDeCiudades(sIdCiudades, "metric", API_ID);
+        Call<CurrentWeatherData> call = jsonPlaceHolderApi.getClimaListaDeCiudades(sIdCiudades, UNITS, API_ID);
         call.enqueue(this);
     }
 

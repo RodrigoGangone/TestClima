@@ -25,13 +25,15 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity.UNITS;
+
 public class DetailActivity extends AppCompatActivity implements Callback<FiveDaysWeatherDataDetail> {
 
     private City mCity;
     private List<CityDaysDetail> mCiudadDetailArrayList;
     private AdapterRecyclerViewDetail mAdapterRecyclerViewDetail;
 
-    public RecyclerView recyclerView ;
+    public RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,22 +64,22 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
         Retrofit retrofit = new Retrofit.Builder().baseUrl(HomeActivity.BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<FiveDaysWeatherDataDetail> call = jsonPlaceHolderApi.getClimaExtendido(id, HomeActivity.API_ID);
+        Call<FiveDaysWeatherDataDetail> call = jsonPlaceHolderApi.getClimaExtendido(id, UNITS, HomeActivity.API_ID);
         call.enqueue(this);
     }
 
 
     @Override
     public void onResponse(Call<FiveDaysWeatherDataDetail> call, Response<FiveDaysWeatherDataDetail> response) {
-        if (response.isSuccessful()){
+        if (response.isSuccessful()) {
             FiveDaysWeatherDataDetail climaExtendido = response.body();
             mCiudadDetailArrayList.addAll(climaExtendido.list);
 
-            mAdapterRecyclerViewDetail = new AdapterRecyclerViewDetail(DetailActivity.this, mCiudadDetailArrayList , climaExtendido);
+            mAdapterRecyclerViewDetail = new AdapterRecyclerViewDetail(DetailActivity.this, mCiudadDetailArrayList, climaExtendido);
             recyclerView.setAdapter(mAdapterRecyclerViewDetail);
 
             mAdapterRecyclerViewDetail.notifyDataSetChanged();
-        }else{
+        } else {
 
         }
     }
