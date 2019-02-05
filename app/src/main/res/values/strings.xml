@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Clima</string>
-    <string name="humidity">Humidity:&#160;</string>
+    <string name="humidity">Humedad:&#160;</string>
+    <string name="presion">Presión:&#160;</string>
     <string name="celsius">&#160;C°</string>
+    <string name="hPa">&#160;hPa</string>
     <string name="percentage">%</string>
 </resources>

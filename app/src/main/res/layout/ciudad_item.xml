@@ -10,7 +10,7 @@
         android:id="@+id/cvItemClimaCiudad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp"
+        card_view:cardCornerRadius="2dp"
         card_view:cardElevation="6dp"
         card_view:cardUseCompatPadding="true">
 
@@ -18,7 +18,7 @@
             android:id="@+id/rlItemClimaCiudad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:padding="5dp">
 
 
             <ImageView

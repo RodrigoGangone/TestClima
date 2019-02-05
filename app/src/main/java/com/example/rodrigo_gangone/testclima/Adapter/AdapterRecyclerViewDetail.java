@@ -66,6 +66,7 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
         holder.tvDescriptionDayTempDetail.setText(String.valueOf(cityDaysDetail.main.temp).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
         holder.tvDescriptionDayTempMinDetail.setText(String.valueOf(cityDaysDetail.main.temp_min).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
         holder.tvDescriptionDayTempMaxDetail.setText(String.valueOf(cityDaysDetail.main.temp_max).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
+        holder.tvDescriptionPressureDetail.setText(mContext.getString(R.string.presion).concat(String.valueOf(cityDaysDetail.main.pressure)).replaceAll(".$", "").concat(mContext.getString(R.string.hPa)));
         holder.tvDescriptionDayHumidityDetail.setText(mContext.getString(R.string.humidity).concat(String.valueOf(cityDaysDetail.main.humidity).concat(mContext.getString(R.string.percentage))));
 
         Picasso.get().load(ICON_URL + codeImageWeatherList + ICON_URL_PNG).
@@ -88,6 +89,7 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
         public TextView tvDescriptionDayTempDetail;
         public TextView tvDescriptionDayTempMinDetail;
         public TextView tvDescriptionDayTempMaxDetail;
+        public TextView tvDescriptionPressureDetail;
         public TextView tvDescriptionDayHumidityDetail;
         public ImageView imageViewTempTodayDetail;
 
@@ -100,6 +102,7 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
             tvDescriptionDayTempDetail = itemView.findViewById(R.id.tvDescriptionDayTempDetail);
             tvDescriptionDayTempMinDetail = itemView.findViewById(R.id.tvDescriptionDayTempMinDetail);
             tvDescriptionDayTempMaxDetail = itemView.findViewById(R.id.tvDescriptionDayTempMaxDetail);
+            tvDescriptionPressureDetail = itemView.findViewById(R.id.tvDescriptionPressureDetail);
             tvDescriptionDayHumidityDetail = itemView.findViewById(R.id.tvDescriptionDayHumidityDetail);
             imageViewTempTodayDetail = itemView.findViewById(R.id.imageViewTempTodayDetail);
         }

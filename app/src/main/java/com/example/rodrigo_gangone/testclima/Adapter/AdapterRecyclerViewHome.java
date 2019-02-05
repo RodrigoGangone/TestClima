@@ -54,15 +54,20 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
                 error(R.drawable.ic_broken_image_24dp).
                 into(holder.imageViewTempToday);
 
-        if(weatherDescription.equals("cielo claro") || weatherDescription.equals("algo de nubes") || weatherDescription.equals("nubes dispersas")){
-            holder.cvItemClimaCiudad.setCardBackgroundColor(mContext.getColor(R.color.color_good_day));
-        }else if (weatherDescription.equals("nuber rotas") || weatherDescription.equals("llovizna") || weatherDescription.equals("lluvia ligera") || weatherDescription.equals("tormenta")){
-            holder.cvItemClimaCiudad.setCardBackgroundColor(mContext.getColor(R.color.color_bad_day));
-        }else if (weatherDescription.equals("nevada ligera")){
-            holder.cvItemClimaCiudad.setCardBackgroundColor(mContext.getColor(R.color.color_snow_day));
-        }else{
-            holder.cvItemClimaCiudad.setCardBackgroundColor(mContext.getColor(R.color.color_fog_day));
+
+        if (codeImageWeatherList.equals("01d") || codeImageWeatherList.equals("02d") || codeImageWeatherList.equals("03d")) {
+            holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_light_blue_gradient));
+        } else if (codeImageWeatherList.equals("01n") || codeImageWeatherList.equals("02n") || codeImageWeatherList.equals("03n")) {
+            holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_night_blue_gradient));
+        } else if (codeImageWeatherList.equals("04d") || codeImageWeatherList.equals("09d") || codeImageWeatherList.equals("10d") || codeImageWeatherList.equals("11d")
+                || codeImageWeatherList.equals("04n") || codeImageWeatherList.equals("09n") || codeImageWeatherList.equals("10n") || codeImageWeatherList.equals("11n")) {
+            holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_storm_gradient));
+        } else if (codeImageWeatherList.equals("13d") || codeImageWeatherList.equals("13n")) {
+            holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_snow_gradient));
+        }else {
+            holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_wind_gradient));
         }
+
 
     }
 
