@@ -40,10 +40,11 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
     public void onBindViewHolder(ClimaViewHolder holder, int position) {
         final CityCurrentData cityCurrentData = mCityCurrentDataList.get(position);
         String weatherDescription = cityCurrentData.weather.get(0).description;
+        String wDFormated = weatherDescription.substring(0, 1).toUpperCase() + weatherDescription.substring(1);
         String codeImageWeatherList = cityCurrentData.weather.get(0).icon;
 
         holder.tvCiudadName.setText(cityCurrentData.name);
-        holder.tvDescriptionDay.setText(weatherDescription);
+        holder.tvDescriptionDay.setText(wDFormated);
         holder.tvDescriptionDayTemp.setText(String.valueOf(cityCurrentData.main.temp).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
         holder.tvDescriptionDayTempMin.setText(String.valueOf(cityCurrentData.main.temp_min).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
         holder.tvDescriptionDayTempMax.setText(String.valueOf(cityCurrentData.main.temp_max).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));

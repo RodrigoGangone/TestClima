@@ -75,7 +75,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create(gson)).build();
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<CurrentWeatherData> call = jsonPlaceHolderApi.getClimaListaDeCiudades(CITYS_ID,LANG, UNITS, API_ID);
+        Call<CurrentWeatherData> call = jsonPlaceHolderApi.getClimaListaDeCiudades(CITYS_ID, LANG, UNITS, API_ID);
         call.enqueue(this);
     }
 
