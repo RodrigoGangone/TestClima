@@ -14,6 +14,9 @@ import com.example.rodrigo_gangone.testclima.Model.CityCurrentData;
 import com.example.rodrigo_gangone.testclima.R;
 import com.squareup.picasso.Picasso;
 
+import java.io.Console;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity.ICON_URL;
@@ -40,8 +43,16 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
     public void onBindViewHolder(ClimaViewHolder holder, int position) {
         final CityCurrentData cityCurrentData = mCityCurrentDataList.get(position);
         String weatherDescription = cityCurrentData.weather.get(0).description;
-        String wDFormated = weatherDescription.substring(0, 1).toUpperCase() + weatherDescription.substring(1);
         String codeImageWeatherList = cityCurrentData.weather.get(0).icon;
+        String wDFormated = weatherDescription.substring(0, 1).toUpperCase() + weatherDescription.substring(1);
+        long sunrise = (long) cityCurrentData.sys.sunrise * 1000;
+        long sunset =  (long) cityCurrentData.sys.sunset * 1000;
+
+        Date sunriseDate = new java.util.Date(sunrise);
+        Date sunsetDate = new java.util.Date(sunset);
+
+        String sunriseFormat = new SimpleDateFormat("hh:mm a").format(sunriseDate);
+        String sunsetFormat = new SimpleDateFormat("hh:mm a").format(sunsetDate);
 
         holder.tvCiudadName.setText(cityCurrentData.name);
         holder.tvDescriptionDay.setText(wDFormated);
@@ -50,11 +61,16 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         holder.tvDescriptionDayTempMax.setText(String.valueOf(cityCurrentData.main.temp_max).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
         holder.tvDescriptionDayHumidity.setText(mContext.getString(R.string.humidity).concat(String.valueOf(cityCurrentData.main.humidity).concat(mContext.getString(R.string.percentage))));
 
+        holder.tvDescriptionDaySunrise.setText(mContext.getString(R.string.sunrise).concat(String.valueOf(sunriseFormat)));
+        holder.tvDescriptionDaySunset.setText(mContext.getString(R.string.sunset).concat(String.valueOf(sunsetFormat)));
+
+
+        holder.tvDescriptionDayPressure.setText(mContext.getString(R.string.presion).concat(String.valueOf(cityCurrentData.main.pressure).concat(mContext.getString(R.string.hPa))));
+
         Picasso.get().load(ICON_URL + codeImageWeatherList + ICON_URL_PNG).
                 placeholder(R.drawable.ic_image_in_progress_24dp).
                 error(R.drawable.ic_broken_image_24dp).
                 into(holder.imageViewTempToday);
-
 
         if (codeImageWeatherList.equals("01d") || codeImageWeatherList.equals("02d") || codeImageWeatherList.equals("03d")) {
             holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_light_blue_gradient));
@@ -98,6 +114,9 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         public TextView tvDescriptionDayTempMin;
         public TextView tvDescriptionDayTempMax;
         public TextView tvDescriptionDayHumidity;
+        public TextView tvDescriptionDayPressure;
+        public TextView tvDescriptionDaySunrise;
+        public TextView tvDescriptionDaySunset;
         public ImageView imageViewTempToday;
 
         public ClimaViewHolder(View itemView) {
@@ -110,6 +129,9 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
             tvDescriptionDayTempMin = itemView.findViewById(R.id.tvDescriptionDayTempMin);
             tvDescriptionDayTempMax = itemView.findViewById(R.id.tvDescriptionDayTempMax);
             tvDescriptionDayHumidity = itemView.findViewById(R.id.tvDescriptionDayHumidity);
+            tvDescriptionDayPressure = itemView.findViewById(R.id.tvDescriptionDayPressure );
+            tvDescriptionDaySunrise = itemView.findViewById(R.id.tvDescriptionDaySunrise );
+            tvDescriptionDaySunset = itemView.findViewById(R.id.tvDescriptionDaySunset );
             imageViewTempToday = itemView.findViewById(R.id.imageViewTempToday);
         }
     }

@@ -8,6 +8,7 @@
 
     <!--Texts Colors -->
     <color name="color_text">#000000</color>
+    <color name="color_text_api">#222121</color>
     <color name="color_text_alternative">#ffffff</color>
 
     <!--Colors items-->

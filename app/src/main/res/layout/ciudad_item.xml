@@ -33,6 +33,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:fontFamily="@font/robotobold"
+            android:textColor="@color/color_text_api"
             android:textSize="30sp"
             tools:text="Buenos Aires" />
 
@@ -41,9 +42,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvCiudadName"
+            android:layout_alignParentStart="true"
             android:layout_marginTop="5dp"
+            android:layout_toStartOf="@+id/tvDescriptionDayTemp"
             android:fontFamily="@font/robotoregular"
-            android:textSize="17sp"
+            android:textColor="@color/color_text_api"
+            android:textSize="20sp"
             tools:text="Despejado" />
 
         <TextView
@@ -54,6 +58,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/robotomedium"
+            android:textColor="@color/color_text_api"
             android:textSize="30sp"
             tools:text="28°C" />
 
@@ -65,10 +70,10 @@
             android:layout_toLeftOf="@+id/tvDescriptionDayTempMin"
             android:drawableEnd="@drawable/ic_arrow_up_24dp"
             android:drawableTint="@color/color_red"
-            android:textSize="17sp"
-            android:layout_alignParentBottom="true"
             android:fontFamily="@font/robotoregular"
-            tools:text="Max temp 18°C" />
+            android:textColor="@color/color_text_api"
+            android:textSize="17sp"
+            tools:text="Max temp" />
 
         <TextView
             android:id="@+id/tvDescriptionDayTempMin"
@@ -77,21 +82,75 @@
             android:layout_below="@id/tvDescriptionDayTemp"
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="10dp"
-            android:textSize="17sp"
+            android:layout_marginBottom="10dp"
             android:drawableEnd="@drawable/ic_arrow_down_24dp"
             android:drawableTint="@color/color_blue"
-            android:layout_alignParentBottom="true"
             android:fontFamily="@font/robotoregular"
-            tools:text="Min temp 32°C" />
+            android:textColor="@color/color_text_api"
+            android:textSize="17sp"
+            tools:text="Min temp" />
 
-        <TextView
-            android:id="@+id/tvDescriptionDayHumidity"
+        <LinearLayout
+            android:id="@+id/llDescriptionDayDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvDescriptionDayTemp"
+            android:layout_below="@+id/tvDescriptionDayTempMin"
+            android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:fontFamily="@font/robotoregular"
-            tools:text="Humedad 78%" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDescriptionDayHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/robotoregular"
+                android:textColor="@color/color_text_api"
+                android:textSize="15sp"
+                tools:text="Humedad 78%" />
+
+            <TextView
+                android:id="@+id/tvDescriptionDayPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotoregular"
+                android:textColor="@color/color_text_api"
+                android:textSize="15sp"
+                tools:text="presión: 1233 hpa" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDescriptionDayTempMin"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/llDescriptionDayDetails"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDescriptionDaySunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/robotoregular"
+                android:textColor="@color/color_text_api"
+                android:textSize="15sp"
+                tools:text="Salida del sol" />
+
+            <TextView
+                android:id="@+id/tvDescriptionDaySunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotoregular"
+                android:textColor="@color/color_text_api"
+                android:textSize="15sp"
+                tools:text="Puesta del sol" />
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 

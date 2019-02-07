@@ -1,120 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true"
     tools:context=".Adapter.AdapterRecyclerViewDetail">
 
-    <android.support.v7.widget.CardView
+    <RelativeLayout
+        android:id="@+id/rlItemClimaCitydDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="2dp"
-        card_view:cardElevation="4dp"
-        card_view:cardUseCompatPadding="true">
+        android:layout_margin="10dp">
 
-        <RelativeLayout
-            android:id="@+id/rlItemClimaCitydDetail"
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/tvDateDetail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_alignParentStart="true"
+            android:fontFamily="@font/robotobold"
+            android:textColor="@color/color_text_api"
+            android:textSize="17sp"
+            tools:text="28/01/2019 03:00" />
 
-            <LinearLayout
-                android:id="@+id/llTvCityNameDetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tvCityNameDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/robotomedium"
+            android:textColor="@color/color_text_api"
+            android:textSize="15sp"
+            tools:text="Buenos Aires" />
 
-                <TextView
-                    android:id="@+id/tvCityNameDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    tools:text="Buenos Aires" />
-
-                <TextView
-                    android:id="@+id/tvDateDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
-                    android:textSize="12sp"
-                    tools:text="28/01/2019 03:00" />
-
-            </LinearLayout>
+        <TextView
+            android:id="@+id/tvDescriptionDayDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDateDetail"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/color_text_api"
+            android:textSize="15sp"
+            tools:text="Mayormente nublado" />
 
 
-            <LinearLayout
-                android:id="@+id/llInfoDay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/llTvCityNameDetail"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvDescriptionDayDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    tools:text="Mayormente nublado" />
-
-                <TextView
-                    android:id="@+id/tvDescriptionPressureDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Presion atmosferica" />
-
-                <TextView
-                    android:id="@+id/tvDescriptionDayHumidityDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Humedad 78%" />
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/imageViewTempTodayDetail"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_below="@+id/llTvCityNameDetail"
-                android:layout_alignParentEnd="true" />
+        <LinearLayout
+            android:id="@+id/llInfoDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDescriptionDayDetail"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvDescriptionDayTempDetail"
+                android:id="@+id/tvDescriptionPressureDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imageViewTempTodayDetail"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="10dp"
-                android:textSize="30sp"
-                tools:text="28°C" />
-
+                android:fontFamily="@font/robotoregular"
+                android:textColor="@color/color_text_api"
+                android:textSize="15sp"
+                tools:text="Presion atmosferica" />
 
             <TextView
-                android:id="@+id/tvDescriptionDayTempMaxDetail"
+                android:id="@+id/tvDescriptionDayHumidityDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvDescriptionDayTempDetail"
-                android:layout_toStartOf="@+id/tvDescriptionDayTempMinDetail"
-                android:drawableEnd="@drawable/ic_arrow_up_24dp"
-                android:drawableTint="@color/color_red"
-                tools:text="Max temp 32°C" />
+                android:fontFamily="@font/robotoregular"
+                android:textColor="@color/color_text_api"
+                android:textSize="15sp"
+                tools:text="Humedad 78%" />
 
-            <TextView
-                android:id="@+id/tvDescriptionDayTempMinDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvDescriptionDayTempDetail"
-                android:layout_alignParentEnd="true"
-                android:layout_marginLeft="20dp"
-                android:drawableEnd="@drawable/ic_arrow_down_24dp"
-                android:drawableTint="@color/color_blue"
-                tools:text="Min temp 18°C" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewTempTodayDetail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/tvDateDetail"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/tvDescriptionDayTempDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageViewTempTodayDetail"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/robotomedium"
+            android:textColor="@color/color_text_api"
+            android:textSize="30sp"
+            tools:text="28°C" />
 
 
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/tvDescriptionDayTempMaxDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvDescriptionDayTempDetail"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/tvDescriptionDayTempMinDetail"
+            android:drawableEnd="@drawable/ic_arrow_up_24dp"
+            android:drawableTint="@color/color_red"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/color_text_api"
+            android:textSize="17sp"
+            tools:text="Max temp" />
 
-    </android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/tvDescriptionDayTempMinDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvDescriptionDayTempDetail"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="@color/color_text_api"
+            android:textSize="17sp"
+            android:drawableEnd="@drawable/ic_arrow_down_24dp"
+            android:drawableTint="@color/color_blue"
+            tools:text="Min temp" />
 
-</LinearLayout>
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
