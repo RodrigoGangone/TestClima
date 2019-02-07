@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical"
     card_view:cardCornerRadius="2dp"
     card_view:cardElevation="4dp"
+    android:clickable="true"
     card_view:cardUseCompatPadding="true"
     tools:context=".Adapter.AdapterRecyclerViewDetail">
 
@@ -14,7 +17,8 @@
         android:id="@+id/rlItemClimaCitydDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp">
 
 
         <TextView
@@ -120,11 +124,11 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="20dp"
+            android:drawableEnd="@drawable/ic_arrow_down_24dp"
+            android:drawableTint="@color/color_blue"
             android:fontFamily="@font/robotoregular"
             android:textColor="@color/color_text_api"
             android:textSize="17sp"
-            android:drawableEnd="@drawable/ic_arrow_down_24dp"
-            android:drawableTint="@color/color_blue"
             tools:text="Min temp" />
 
 

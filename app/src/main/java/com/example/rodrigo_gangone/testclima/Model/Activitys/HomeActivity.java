@@ -1,5 +1,6 @@
 package com.example.rodrigo_gangone.testclima.Model.Activitys;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.rodrigo_gangone.testclima.Adapter.AdapterRecyclerViewHome;
@@ -40,6 +42,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
     private List<CityCurrentData> mCityCurrentDataArrayList;
     private AdapterRecyclerViewHome mAdapterRecyclerViewHome;
     private LinearLayout llErrorConnection;
+    private ProgressBar loadProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
         setContentView(R.layout.activity_home);
 
         llErrorConnection = findViewById(R.id.llErrorConnection);
+        loadProgress = findViewById(R.id.progressBar);
 
         recyclerBuilder();
         loadClimaActual();
@@ -67,6 +71,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
                 Intent intent = new Intent(HomeActivity.this, DetailActivity.class);
                 intent.putExtra(ID_CITY_KEY, mCityCurrentDataArrayList.get(recyclerView.getChildAdapterPosition(view)).id);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         recyclerView.setAdapter(mAdapterRecyclerViewHome);
@@ -80,11 +85,15 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
         Call<CurrentWeatherData> call = jsonPlaceHolderApi.getClimaListaDeCiudades(CITYS_ID, LANG, UNITS, API_ID);
+
+        loadProgress.setVisibility(View.VISIBLE);
+
         call.enqueue(this);
     }
 
     @Override
     public void onResponse(Call<CurrentWeatherData> call, Response<CurrentWeatherData> response) {
+        loadProgress.setVisibility(View.GONE);
         if (response.isSuccessful()) {
             CurrentWeatherData ciudadesList = response.body();
             mCityCurrentDataArrayList.addAll(ciudadesList.list);
@@ -97,6 +106,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
 
     @Override
     public void onFailure(Call<CurrentWeatherData> call, Throwable t) {
+        loadProgress.setVisibility(View.GONE);
         llErrorConnection.setVisibility(View.VISIBLE);
     }
 

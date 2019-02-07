@@ -61,9 +61,10 @@ public class AdapterRecyclerViewDetail extends RecyclerView.Adapter<AdapterRecyc
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        String myDateUpperCase = myDateFormat.substring(0, 1).toUpperCase() + myDateFormat.substring(1);
 
         holder.tvCityNameDetail.setText(mFiveDaysWeatherDataDetail.city.name);
-        holder.tvDateDetail.setText(myDateFormat);
+        holder.tvDateDetail.setText(myDateUpperCase);
         holder.tvDescriptionDayDetail.setText(wDFormated);
         holder.tvDescriptionDayTempDetail.setText(String.valueOf(cityDaysDetail.main.temp).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
         holder.tvDescriptionDayTempMinDetail.setText(String.valueOf(cityDaysDetail.main.temp_min).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
