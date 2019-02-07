@@ -110,4 +110,5 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
         llErrorConnection.setVisibility(View.VISIBLE);
     }
 
+
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -42,6 +43,8 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather5_days);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         llErrorConnection = findViewById(R.id.llErrorConnection);
         loadProgress = findViewById(R.id.progressBar);
@@ -100,10 +103,15 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
         llErrorConnection.setVisibility(View.VISIBLE);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
