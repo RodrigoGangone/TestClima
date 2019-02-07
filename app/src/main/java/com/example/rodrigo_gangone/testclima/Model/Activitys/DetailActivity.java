@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.rodrigo_gangone.testclima.Adapter.AdapterRecyclerViewDetail;
 import com.example.rodrigo_gangone.testclima.Api.JsonPlaceHolderApi;
-import com.example.rodrigo_gangone.testclima.Model.City;
 import com.example.rodrigo_gangone.testclima.Model.CityDaysDetail;
 import com.example.rodrigo_gangone.testclima.Model.FiveDaysWeatherDataDetail;
 import com.example.rodrigo_gangone.testclima.R;
@@ -30,10 +30,9 @@ import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity
 
 public class DetailActivity extends AppCompatActivity implements Callback<FiveDaysWeatherDataDetail> {
 
-    private City mCity;
     private List<CityDaysDetail> mCiudadDetailArrayList;
     private AdapterRecyclerViewDetail mAdapterRecyclerViewDetail;
-
+    private LinearLayout llErrorConnection;
     public RecyclerView recyclerView;
 
     @Override
@@ -41,6 +40,7 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather5_days);
 
+        llErrorConnection = findViewById(R.id.llErrorConnection);
         recyclerBuilder();
 
         Intent intent = getIntent();
@@ -86,7 +86,6 @@ public class DetailActivity extends AppCompatActivity implements Callback<FiveDa
 
     @Override
     public void onFailure(Call<FiveDaysWeatherDataDetail> call, Throwable t) {
-        Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show();
-
+        llErrorConnection.setVisibility(View.VISIBLE);
     }
 }

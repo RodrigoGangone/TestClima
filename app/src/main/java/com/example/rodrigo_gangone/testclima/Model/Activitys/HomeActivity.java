@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.rodrigo_gangone.testclima.Adapter.AdapterRecyclerViewHome;
@@ -38,11 +39,14 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
 
     private List<CityCurrentData> mCityCurrentDataArrayList;
     private AdapterRecyclerViewHome mAdapterRecyclerViewHome;
+    private LinearLayout llErrorConnection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        llErrorConnection = findViewById(R.id.llErrorConnection);
 
         recyclerBuilder();
         loadClimaActual();
@@ -93,7 +97,7 @@ public class HomeActivity extends AppCompatActivity implements Callback<CurrentW
 
     @Override
     public void onFailure(Call<CurrentWeatherData> call, Throwable t) {
-        t.printStackTrace();
+        llErrorConnection.setVisibility(View.VISIBLE);
     }
 
 }
