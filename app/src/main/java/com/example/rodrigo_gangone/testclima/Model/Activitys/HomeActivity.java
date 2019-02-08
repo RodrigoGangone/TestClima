@@ -1,6 +1,5 @@
 package com.example.rodrigo_gangone.testclima.Model.Activitys;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.rodrigo_gangone.testclima.Adapter.AdapterRecyclerViewHome;
 import com.example.rodrigo_gangone.testclima.Api.JsonPlaceHolderApi;

@@ -14,7 +14,6 @@ import com.example.rodrigo_gangone.testclima.Model.CityCurrentData;
 import com.example.rodrigo_gangone.testclima.R;
 import com.squareup.picasso.Picasso;
 
-import java.io.Console;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +22,8 @@ import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity
 import static com.example.rodrigo_gangone.testclima.Model.Activitys.HomeActivity.ICON_URL_PNG;
 
 public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecyclerViewHome.ClimaViewHolder> implements View.OnClickListener {
+    private static final String FORMAT_DAY = "hh:mm a";
+
     private List<CityCurrentData> mCityCurrentDataList;
     private Context mContext;
     private View.OnClickListener listener;
@@ -51,8 +52,8 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         Date sunriseDate = new java.util.Date(sunrise);
         Date sunsetDate = new java.util.Date(sunset);
 
-        String sunriseFormat = new SimpleDateFormat("hh:mm a").format(sunriseDate);
-        String sunsetFormat = new SimpleDateFormat("hh:mm a").format(sunsetDate);
+        String sunriseFormat = new SimpleDateFormat(FORMAT_DAY).format(sunriseDate);
+        String sunsetFormat = new SimpleDateFormat(FORMAT_DAY).format(sunsetDate);
 
         holder.tvCiudadName.setText(cityCurrentData.name);
         holder.tvDescriptionDay.setText(wDFormated);
@@ -101,7 +102,6 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         } else {
             holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_wind_gradient));
         }
-
 
     }
 
