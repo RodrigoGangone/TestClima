@@ -46,7 +46,7 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         String codeImageWeatherList = cityCurrentData.weather.get(0).icon;
         String wDFormated = weatherDescription.substring(0, 1).toUpperCase() + weatherDescription.substring(1);
         long sunrise = (long) cityCurrentData.sys.sunrise * 1000;
-        long sunset =  (long) cityCurrentData.sys.sunset * 1000;
+        long sunset = (long) cityCurrentData.sys.sunset * 1000;
 
         Date sunriseDate = new java.util.Date(sunrise);
         Date sunsetDate = new java.util.Date(sunset);
@@ -57,13 +57,12 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
         holder.tvCiudadName.setText(cityCurrentData.name);
         holder.tvDescriptionDay.setText(wDFormated);
         holder.tvDescriptionDayTemp.setText(String.valueOf(cityCurrentData.main.temp).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
-        holder.tvDescriptionDayTempMin.setText(String.valueOf(cityCurrentData.main.temp_min).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
-        holder.tvDescriptionDayTempMax.setText(String.valueOf(cityCurrentData.main.temp_max).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
+        holder.tvDescriptionDayTempMin.setText(mContext.getString(R.string.temp_min).concat(String.valueOf(cityCurrentData.main.temp_min)).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
+        holder.tvDescriptionDayTempMax.setText(mContext.getString(R.string.temp_max).concat(String.valueOf(cityCurrentData.main.temp_max)).replaceAll(".$", "").concat(mContext.getString(R.string.celsius)));
         holder.tvDescriptionDayHumidity.setText(mContext.getString(R.string.humidity).concat(String.valueOf(cityCurrentData.main.humidity).concat(mContext.getString(R.string.percentage))));
 
         holder.tvDescriptionDaySunrise.setText(mContext.getString(R.string.sunrise).concat(String.valueOf(sunriseFormat)));
         holder.tvDescriptionDaySunset.setText(mContext.getString(R.string.sunset).concat(String.valueOf(sunsetFormat)));
-
 
         holder.tvDescriptionDayPressure.setText(mContext.getString(R.string.presion).concat(String.valueOf(cityCurrentData.main.pressure).concat(mContext.getString(R.string.hPa))));
 
@@ -76,12 +75,30 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
             holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_light_blue_gradient));
         } else if (codeImageWeatherList.equals("01n") || codeImageWeatherList.equals("02n") || codeImageWeatherList.equals("03n")) {
             holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_night_blue_gradient));
+            holder.tvCiudadName.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDay.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDayTemp.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDayTempMin.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDayTempMax.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDayHumidity.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDayPressure.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDaySunrise.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDaySunset.setTextColor(mContext.getColor(R.color.color_text_alternative));
         } else if (codeImageWeatherList.equals("04d") || codeImageWeatherList.equals("09d") || codeImageWeatherList.equals("10d") || codeImageWeatherList.equals("11d")
                 || codeImageWeatherList.equals("04n") || codeImageWeatherList.equals("09n") || codeImageWeatherList.equals("10n") || codeImageWeatherList.equals("11n")) {
             holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_storm_gradient));
+            holder.tvCiudadName.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDay.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDayTemp.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDayTempMin.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDayTempMax.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDayHumidity.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDayPressure.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDaySunrise.setTextColor(mContext.getColor(R.color.color_text_alternative));
+            holder.tvDescriptionDaySunset.setTextColor(mContext.getColor(R.color.color_text_alternative));
         } else if (codeImageWeatherList.equals("13d") || codeImageWeatherList.equals("13n")) {
             holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_snow_gradient));
-        }else {
+        } else {
             holder.rlItemClimaCiudad.setBackground(mContext.getDrawable(R.drawable.color_wind_gradient));
         }
 
@@ -129,9 +146,9 @@ public class AdapterRecyclerViewHome extends RecyclerView.Adapter<AdapterRecycle
             tvDescriptionDayTempMin = itemView.findViewById(R.id.tvDescriptionDayTempMin);
             tvDescriptionDayTempMax = itemView.findViewById(R.id.tvDescriptionDayTempMax);
             tvDescriptionDayHumidity = itemView.findViewById(R.id.tvDescriptionDayHumidity);
-            tvDescriptionDayPressure = itemView.findViewById(R.id.tvDescriptionDayPressure );
-            tvDescriptionDaySunrise = itemView.findViewById(R.id.tvDescriptionDaySunrise );
-            tvDescriptionDaySunset = itemView.findViewById(R.id.tvDescriptionDaySunset );
+            tvDescriptionDayPressure = itemView.findViewById(R.id.tvDescriptionDayPressure);
+            tvDescriptionDaySunrise = itemView.findViewById(R.id.tvDescriptionDaySunrise);
+            tvDescriptionDaySunset = itemView.findViewById(R.id.tvDescriptionDaySunset);
             imageViewTempToday = itemView.findViewById(R.id.imageViewTempToday);
         }
     }

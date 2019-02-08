@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Clima</string>
     <string name="humidity">Humedad:&#160;</string>
+    <string name="temp_max">Max.&#160;</string>
+    <string name="temp_min">Min.&#160;</string>
     <string name="sunrise">Salida del sol:&#160;</string>
     <string name="sunset">Puesta del sol:&#160;</string>
     <string name="presion">Presión:&#160;</string>
