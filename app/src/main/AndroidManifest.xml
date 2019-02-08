@@ -11,13 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
+
+        <activity android:name=".Model.Activitys.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Model.Activitys.DetailActivity" >
+
+            <meta-data
+                android:name=".Model.Activitys.DetailActivity"
+                android:value=".Model.Activitys.HomeActivity"/>
+
+        </activity>
+
     </application>
 
 </manifest>
